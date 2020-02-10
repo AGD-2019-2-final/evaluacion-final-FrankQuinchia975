@@ -1,4 +1,4 @@
-
+P
 r"""Test cases
 >>> run_answer() # doctest: +NORMALIZE_WHITESPACE
 5

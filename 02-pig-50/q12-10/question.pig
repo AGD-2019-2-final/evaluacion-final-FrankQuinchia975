@@ -22,14 +22,21 @@
 -- Escriba el resultado a la carpeta `output` del directorio actual.
 -- 
 fs -rm -f -r output;
---
-u = LOAD 'data.csv' USING PigStorage(',') 
-    AS (id:int, 
-        firstname:CHARARRAY, 
-        surname:CHARARRAY, 
-        birthday:CHARARRAY, 
-        color:CHARARRAY, 
+fs -rm -f -r data.csv;
+fs -put data.csv;
+
+u = LOAD 'data.csv' USING PigStorage(',')
+    AS (id:int,
+        firstname:CHARARRAY,
+        surname:CHARARRAY,
+        birthday:CHARARRAY,
+        color:CHARARRAY,
         quantity:INT);
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
+j = FOREACH u GENERATE surname, SUBSTRING(surname, 0, 1);
+k = FILTER j BY $1 IN ('D', 'E', 'F', 'G', 'H', 'I', 'J', 'K');
+l = FOREACH k GENERATE $0;
+STORE l INTO 'output';
+fs -copyToLocal output output;

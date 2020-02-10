@@ -8,3 +8,17 @@ fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
+
+fs -rm -f -r data.tsv;
+fs -put data.tsv;
+
+lin = LOAD './data.tsv' USING PigStorage('\t') AS (f1:CHARARRAY, f2:CHARARRAY, f3:INT);
+
+y = FOREACH lin GENERATE  f3;
+x = ORDER y BY f3 ASC ;
+z = LIMIT x 5;
+
+STORE z INTO 'output';
+fs -copyToLocal output output; 
+
+

@@ -18,6 +18,9 @@
 -- 
 fs -rm -f -r output;
 -- 
+fs -rm -f -r data.csv;
+fs -put data.csv;
+
 u = LOAD 'data.csv' USING PigStorage(',') 
     AS (id:int, 
         firstname:CHARARRAY, 
@@ -25,6 +28,12 @@ u = LOAD 'data.csv' USING PigStorage(',')
         birthday:CHARARRAY, 
         color:CHARARRAY, 
         quantity:INT);
+        
+col = FOREACH u GENERATE  firstname, color ;
+c = FILTER col BY  NOT (color MATCHES  '.*b.*');
+
+STORE c INTO 'output' USING PigStorage(',');
+fs -copyToLocal output output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
