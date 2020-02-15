@@ -28,10 +28,6 @@ fs -rm -f -r output;
 --  >>> Escriba su respuesta a partir de este punto <<<
 -- 
 
-fs -rm -f -r truck_event_text_partition.csv;
-fs -put truck_event_text_partition.csv;
-
-
 lin = LOAD './truck_event_text_partition.csv' USING PigStorage(',')
 AS (
 driverId:INT, 
@@ -52,6 +48,3 @@ z = LIMIT y 10;
 X = ORDER z BY  driverId,truckId, eventTime;
 
 STORE X INTO 'output' using PigStorage(',');
-fs -copyToLocal output output; 
-
-

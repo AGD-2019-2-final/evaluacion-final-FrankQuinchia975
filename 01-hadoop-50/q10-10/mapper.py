@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 ## Esta es la funcion que mapea la entrada a parejas (clave, valor)
 import sys
     
@@ -17,4 +19,3 @@ if __name__ == "__main__":
                 a+=numero
                 numero=a
             print(letras[i] + "\t" + numero)
-        

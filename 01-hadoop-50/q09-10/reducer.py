@@ -1,7 +1,5 @@
+#! /usr/bin/python3
 
-#
-#  >>> Escriba el codigo del mapper a partir de este punto <<<
-#
 import sys
 ## Esta funcion ordena los elementos
 

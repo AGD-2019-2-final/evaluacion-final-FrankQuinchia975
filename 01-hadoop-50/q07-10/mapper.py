@@ -1,3 +1,6 @@
+#! /usr/bin/python3
+
+## Esta es la funcion que mapea la entrada a parejas (clave, valor)
 
 import sys
 if __name__ == "__main__":

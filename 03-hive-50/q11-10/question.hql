@@ -27,4 +27,3 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 select c1, size(c2), size(c3)
 from t0;
 
-

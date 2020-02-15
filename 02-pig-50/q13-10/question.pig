@@ -18,8 +18,6 @@
 -- 
 fs -rm -f -r output;
 --
-fs -rm -f -r data.csv;
-fs -put data.csv;
 
 u = LOAD 'data.csv' USING PigStorage(',') 
     AS (id:int, 
@@ -33,7 +31,3 @@ c = FILTER col BY  letra  MATCHES 'b' ;
 d = FOREACH c GENERATE $0;
 
 STORE d INTO 'output';
-fs -copyToLocal output output;
---
--- >>> Escriba su respuesta a partir de este punto <<<
---

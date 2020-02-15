@@ -1,24 +1,26 @@
--- 
+--
 -- Pregunta
 -- ===========================================================================
 -- 
 -- Para responder la pregunta use el archivo `data.csv`.
 -- 
--- Escriba el código equivalente a la siguiente consulta SQL.
+-- Escriba el código equivalente a la siguiente consulta en SQL.
 -- 
---    SELECT 
---        firstname,
+--    SELECT
 --        color
 --    FROM 
---        u
+--        u 
 --    WHERE 
---        color REGEXP '.n';
+--        color 
+--    LIKE 'b%';
 -- 
 -- Escriba el resultado a la carpeta `output` del directorio actual.
 -- 
 fs -rm -f -r output;
+--
+fs -rm -f -r data.csv;
+fs -put data.csv;
 
--- 
 u = LOAD 'data.csv' USING PigStorage(',') 
     AS (id:int, 
         firstname:CHARARRAY, 
@@ -26,8 +28,12 @@ u = LOAD 'data.csv' USING PigStorage(',')
         birthday:CHARARRAY, 
         color:CHARARRAY, 
         quantity:INT);
-        
-col = FOREACH u GENERATE  firstname, color ;
-c = FILTER col BY  color MATCHES   '[a-z]*.n';
+col = FOREACH u GENERATE color, SUBSTRING(color, 0 ,1) as letra ;
+c = FILTER col BY  letra  MATCHES 'b' ;
+d = FOREACH c GENERATE $0;
 
-STORE c INTO 'output' USING PigStorage(',');
+STORE d INTO 'output';
+fs -copyToLocal output output;
+--
+-- >>> Escriba su respuesta a partir de este punto <<<
+--

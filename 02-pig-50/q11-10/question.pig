@@ -45,4 +45,3 @@ y = ORDER apell BY surname ;
 
 
 STORE y INTO 'output' using PigStorage(',');
-fs -copyToLocal output output;

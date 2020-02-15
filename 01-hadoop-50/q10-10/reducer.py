@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import sys
 
 ## Esta funcion reduce los elementos que tienen la misma clave

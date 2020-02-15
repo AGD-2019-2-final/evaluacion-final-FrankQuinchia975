@@ -43,6 +43,7 @@ E   1985-02-12   17
 E   1990-02-09   18	
 E   1993-12-27   19	
 <BLANKLINE>
+
 """
 import doctest
 import subprocess

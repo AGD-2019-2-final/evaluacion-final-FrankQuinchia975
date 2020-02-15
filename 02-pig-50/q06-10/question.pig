@@ -13,9 +13,6 @@ fs -rm -f -r output;
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
 
-fs -rm -f -r data.tsv;
-fs -put data.tsv;
-
 lines = LOAD './data.tsv' USING PigStorage('\t') AS 
 (f1:CHARARRAY,
 f2:BAG{t:TUPLE(p:CHARARRAY)},
@@ -26,7 +23,3 @@ grouped = GROUP ss BY s;
 wordcount = FOREACH grouped GENERATE group, COUNT(ss);
 
 STORE wordcount INTO 'output' using PigStorage(',');
-fs -copyToLocal output output;
-
-
-

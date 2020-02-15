@@ -1,3 +1,8 @@
+#! /usr/bin/python3
+
+##
+## Esta es la funcion que mapea la entrada a parejas (clave, valor)
+##
 import sys
 if __name__ == "__main__":
 
@@ -17,5 +22,3 @@ if __name__ == "__main__":
         ## ya que es un conteo de palabras
         ##
         ##sys.stdout.write("{}\t1\n".format(splits[0]))
-
-        #

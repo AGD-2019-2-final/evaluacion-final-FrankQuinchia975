@@ -30,8 +30,3 @@ col = FOREACH u GENERATE  firstname, color ;
 c = FILTER col BY  color MATCHES   '[a-z]*.[aeiou]';
 
 STORE c INTO 'output' USING PigStorage(',');
-fs -copyToLocal output output;
---
--- >>> Escriba su respuesta a partir de este punto <<<
---
-

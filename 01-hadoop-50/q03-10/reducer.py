@@ -1,8 +1,7 @@
+#! /usr/bin/python3
+
 import sys
-#
-# >>> Escriba el codigo del reducer a partir de este punto <<<
-#
-# Esta funcion ordena los elementos
+## Esta funcion ordena los elementos
 
 if __name__ == '__main__':
     ## cada linea de texto recibida es una entrada clave \tabulador valor 

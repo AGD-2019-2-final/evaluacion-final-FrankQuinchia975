@@ -18,8 +18,6 @@
 fs -rm -f -r output;
 --
 
-fs -rm -f -r data.csv;
-fs -put data.csv;
 --
 u = LOAD 'data.csv' USING PigStorage(',') 
     AS (id:int, 
@@ -35,7 +33,3 @@ fin= FOREACH let GENERATE firstname;
 
 
 STORE fin INTO 'output' ;
-fs -copyToLocal output output;
---
--- >>> Escriba su respuesta a partir de este punto <<<
---

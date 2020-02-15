@@ -12,9 +12,6 @@ fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
-fs -rm -f -r data.tsv;
-fs -put data.tsv;
-
 lines = LOAD './data.tsv' USING PigStorage('\t') AS 
 (f1:CHARARRAY,
 f2:BAG{t:TUPLE(p:CHARARRAY)},
@@ -23,4 +20,3 @@ words = FOREACH lines GENERATE f1, SIZE(f2) as word1 , SIZE(f3) as word2;
 final = ORDER words BY f1, word1, word2;
 
 STORE final INTO 'output' using PigStorage(',');
-fs -copyToLocal output output;

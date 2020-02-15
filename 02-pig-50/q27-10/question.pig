@@ -16,9 +16,6 @@
 -- 
 fs -rm -f -r output;
 --
-fs -rm -f -r data.csv;
-fs -put data.csv;
---
 u = LOAD 'data.csv' USING PigStorage(',') 
     AS (id:int, 
         firstname:CHARARRAY, 
@@ -30,7 +27,3 @@ u = LOAD 'data.csv' USING PigStorage(',')
 col = FOREACH u GENERATE  INDEXOF(firstname,'ia', 0 );
 
 STORE col INTO 'output' ;
-fs -copyToLocal output output;
---
--- >>> Escriba su respuesta a partir de este punto <<<
---
